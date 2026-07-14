@@ -1,5 +1,35 @@
-import type { Confidence, Basemap, Source, TimeRange } from "./types";
+import type { Confidence, Basemap, Locale, Source, TimeRange } from "./types";
 import type { StyleSpecification } from "maplibre-gl";
+
+// Falls back to localhost so `next build` works before a production domain
+// is configured; set NEXT_PUBLIC_SITE_URL on Vercel once the domain is known.
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+
+export const SITE = {
+  url: SITE_URL,
+  name: "Fires",
+  defaultLocale: "fr" as Locale,
+  title: {
+    fr: "Fires — Carte des feux de forêt et incendies en France en direct",
+    en: "Fires — Live Wildfire Map of France",
+  },
+  description: {
+    fr: "Carte en direct des feux de forêt et incendies en France : localisation, intensité et niveau de confiance, à partir des données satellite NASA FIRMS (VIIRS, MODIS, Landsat).",
+    en: "Live map of wildfires and forest fires across France: location, intensity, and detection confidence from NASA FIRMS satellite data (VIIRS, MODIS, Landsat).",
+  },
+  keywords: {
+    fr: [
+      "feux de forêt",
+      "incendies",
+      "forêt",
+      "feux de forêt France",
+      "carte des incendies",
+      "incendies en direct",
+      "feux de forêt en temps réel",
+    ],
+    en: ["wildfires France", "forest fires", "wildfire map", "live fire tracker"],
+  },
+};
 
 export const MAP_DEFAULTS = {
   center: { lat: 46.6, lon: 2.2 },

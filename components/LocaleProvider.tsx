@@ -2,13 +2,14 @@
 
 import { createContext, useContext, useEffect, useSyncExternalStore } from "react";
 import { TRANSLATIONS, type Translations } from "@/lib/translations";
+import { SITE } from "@/lib/config";
 import type { Locale } from "@/lib/types";
 
 const STORAGE_KEY = "fires-locale";
 const LOCALE_EVENT = "fires-locale-change";
 
 // A saved choice wins; otherwise detect from the browser. Only read on the
-// client — getServerSnapshot below keeps SSR/hydration stable at "en".
+// client — getServerSnapshot below keeps SSR/hydration stable at SITE.defaultLocale.
 function detectLocale(): Locale {
   const stored = localStorage.getItem(STORAGE_KEY);
   if (stored === "en" || stored === "fr") return stored;
@@ -16,7 +17,7 @@ function detectLocale(): Locale {
 }
 
 function getServerSnapshot(): Locale {
-  return "en";
+  return SITE.defaultLocale;
 }
 
 // Notifies useSyncExternalStore when the locale changes: "storage" fires in
@@ -45,11 +46,11 @@ function setLocale(locale: Locale) {
 }
 
 export function LocaleProvider({ children }: { children: React.ReactNode }) {
-  // SSR and the first client paint both use getServerSnapshot ("en"), so
-  // there's no hydration mismatch; React re-reads via detectLocale() right
-  // after hydration, which may flip to "fr" for French-browser first-time
-  // visitors (a one-time flash, consistent with /api/fires only populating
-  // the map after mount too).
+  // SSR and the first client paint both use getServerSnapshot (SITE.defaultLocale,
+  // "fr"), so there's no hydration mismatch; React re-reads via detectLocale()
+  // right after hydration, which may flip to "en" for English-browser
+  // first-time visitors (a one-time flash, consistent with /api/fires only
+  // populating the map after mount too).
   const locale = useSyncExternalStore(subscribe, detectLocale, getServerSnapshot);
 
   useEffect(() => {

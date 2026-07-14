@@ -1,7 +1,13 @@
+"use client";
+
+import { useLocale } from "./LocaleProvider";
+
 export default function Footer() {
+  const { t } = useLocale();
   return (
     <footer className="px-6 py-2.5 text-center text-xs text-neutral-500 bg-white border-t border-neutral-200 shrink-0">
-      Made by{" "}
+      <p className="sr-only">{t.footer.intro}</p>
+      {t.footer.madeBy}{" "}
       <a
         href="https://github.com/jeromeberg/"
         target="_blank"
@@ -10,7 +16,7 @@ export default function Footer() {
       >
         Jerome Berg
       </a>
-      . Data from NASA FIRMS.
+      . {t.footer.dataFrom}
     </footer>
   );
 }

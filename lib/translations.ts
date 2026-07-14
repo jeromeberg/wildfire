@@ -22,6 +22,11 @@ export interface Translations {
   errors: {
     fetchFailed: string;
   };
+  footer: {
+    intro: string;
+    madeBy: string;
+    dataFrom: string;
+  };
 }
 
 const EN: Translations = {
@@ -46,6 +51,12 @@ const EN: Translations = {
   errors: {
     fetchFailed: "Failed to load data",
   },
+  footer: {
+    intro:
+      "Live map of wildfires and forest fires across France, built from NASA FIRMS satellite data (VIIRS, MODIS, Landsat).",
+    madeBy: "Made by",
+    dataFrom: "Data from NASA FIRMS.",
+  },
 };
 
 const FR: Translations = {
@@ -69,6 +80,12 @@ const FR: Translations = {
   basemap: { plan: "Plan", satellite: "Satellite" },
   errors: {
     fetchFailed: "Échec du chargement des données",
+  },
+  footer: {
+    intro:
+      "Carte en direct des feux de forêt et incendies en France, à partir des données satellite NASA FIRMS (VIIRS, MODIS, Landsat).",
+    madeBy: "Réalisé par",
+    dataFrom: "Données NASA FIRMS.",
   },
 };
 
