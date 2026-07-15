@@ -61,7 +61,7 @@ const EN: Translations = {
 
 const FR: Translations = {
   nav: {
-    tagline: "Incendies en direct en France",
+    tagline: "Incendies et feux de forêt en direct en France",
     openOptions: "Ouvrir les options",
     closeOptions: "Fermer les options",
     switchToFrench: "Passer en français",

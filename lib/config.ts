@@ -10,18 +10,19 @@ export const SITE = {
   name: "Fires",
   defaultLocale: "fr" as Locale,
   title: {
-    fr: "Fires — Carte des feux de forêt et incendies en France en direct",
-    en: "Fires — Live Wildfire Map of France",
+    fr: "Fires - Carte des feux de forêt et incendies en France en direct",
+    en: "Fires - Live Wildfire Map of France",
   },
   description: {
-    fr: "Carte en direct des feux de forêt et incendies en France : localisation, intensité et niveau de confiance, à partir des données satellite NASA FIRMS (VIIRS, MODIS, Landsat).",
-    en: "Live map of wildfires and forest fires across France: location, intensity, and detection confidence from NASA FIRMS satellite data (VIIRS, MODIS, Landsat).",
+    fr: "Carte en direct des feux de forêt et incendies en France à partir des données satellite NASA FIRMS (VIIRS, MODIS, Landsat).",
+    en: "Live map of wildfires and forest fires across France from NASA FIRMS satellite data (VIIRS, MODIS, Landsat).",
   },
   keywords: {
     fr: [
       "feux de forêt",
       "incendies",
       "forêt",
+      "fontainebleau",
       "feux de forêt France",
       "carte des incendies",
       "incendies en direct",
@@ -87,12 +88,12 @@ export const TIME_RANGE_OPTIONS: { id: TimeRange; dayRange: number }[] = [
 ];
 export const DEFAULT_TIME_RANGE: TimeRange = "24h";
 
-export const CIRCLE_RADIUS_METERS = { min: 100, max: 2000, step: 100, default: 300 };
+export const CIRCLE_RADIUS_METERS = { min: 100, max: 2000, step: 100, default: 700 };
 
-export const GROUPING_RADIUS_KM = { min: 0.5, max: 20, step: 0.5, default: 5 };
+export const GROUPING_RADIUS_KM = { min: 1, max: 20, step: 0.5, default: 13 };
 
 // At/above this zoom level, points render ungrouped as individuals.
-export const GROUPING_ZOOM_THRESHOLD = 8;
+export const GROUPING_ZOOM_THRESHOLD = 9;
 
 // Clicking a cluster zooms the map to fit its member points.
 export const CLUSTER_CLICK_ZOOM = {
@@ -115,7 +116,7 @@ export const CONFIDENCE_LEVELS: { id: Confidence; color: string }[] = [
   { id: "medium", color: "#f97316" },
   { id: "high", color: "#dc2626" },
 ];
-export const DEFAULT_CONFIDENCE_FILTER: Confidence[] = ["low", "medium", "high"];
+export const DEFAULT_CONFIDENCE_FILTER: Confidence[] = ["medium", "high"];
 
 // MODIS/Landsat confidence is a 0-100 number; VIIRS confidence is already a
 // low/nominal/high category and does not use these thresholds.
