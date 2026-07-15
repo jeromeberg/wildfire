@@ -5,6 +5,8 @@
 
 A map of wildfires in France, using live data from NASA FIRMS.
 
+![screenshot](./docs/screenshot.png)
+
 ## Stack
 
 - Next.js
