@@ -3,6 +3,7 @@
 import Link from "next/link";
 import LanguagePicker from "./LanguagePicker";
 import { useLocale } from "./LocaleProvider";
+import { SITE } from "@/lib/config";
 
 interface NavbarProps {
   sidebarOpen: boolean;
@@ -41,7 +42,7 @@ export default function Navbar({ sidebarOpen, onToggleSidebar }: NavbarProps) {
             <span aria-hidden className="text-lg leading-none">
               🔥
             </span>
-            Fires
+            {SITE.name}
           </Link>
         </h1>
         <p className="hidden text-sm text-neutral-500 sm:block">{t.nav.tagline}</p>

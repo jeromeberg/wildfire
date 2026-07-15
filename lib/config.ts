@@ -7,11 +7,11 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 
 export const SITE = {
   url: SITE_URL,
-  name: "Fires",
+  name: "Incendies",
   defaultLocale: "fr" as Locale,
   title: {
-    fr: "Fires - Carte des feux de forêt et incendies en France en direct",
-    en: "Fires - Live Wildfire Map of France",
+    fr: "Incendies - Carte des feux de forêt et incendies en France en direct",
+    en: "Incendies - Live Wildfire Map of France",
   },
   description: {
     fr: "Carte en direct des feux de forêt et incendies en France à partir des données satellite NASA FIRMS (VIIRS, MODIS, Landsat).",
