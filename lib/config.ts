@@ -86,7 +86,7 @@ export const TIME_RANGE_OPTIONS: { id: TimeRange; dayRange: number }[] = [
   { id: "48h", dayRange: 2 },
   { id: "7d", dayRange: 5 },
 ];
-export const DEFAULT_TIME_RANGE: TimeRange = "24h";
+export const DEFAULT_TIME_RANGE: TimeRange = "48h";
 
 export const CIRCLE_RADIUS_METERS = { min: 100, max: 2000, step: 100, default: 700 };
 
@@ -116,7 +116,7 @@ export const CONFIDENCE_LEVELS: { id: Confidence; color: string }[] = [
   { id: "medium", color: "#f97316" },
   { id: "high", color: "#dc2626" },
 ];
-export const DEFAULT_CONFIDENCE_FILTER: Confidence[] = ["medium", "high"];
+export const DEFAULT_CONFIDENCE_FILTER: Confidence[] = ["low", "medium", "high"];
 
 // MODIS/Landsat confidence is a 0-100 number; VIIRS confidence is already a
 // low/nominal/high category and does not use these thresholds.
