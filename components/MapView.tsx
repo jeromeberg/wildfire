@@ -72,7 +72,6 @@ export default function MapView({
       : filteredPoints.map((point): MapPoint => ({ kind: "single", point }));
   }, [filteredPoints, groupingRadiusKm, isBelowGroupingThreshold]);
 
-  // Create the map once.
   useEffect(() => {
     if (!containerRef.current) return;
 
@@ -83,12 +82,11 @@ export default function MapView({
       zoom: MAP_DEFAULTS.zoom,
       minZoom: MAP_DEFAULTS.minZoom,
       maxZoom: MAP_DEFAULTS.maxZoom,
-      // Keeps #zoom/lat/lng in the URL (and restores it on load), so the
-      // current view is shareable by copying the address bar.
       hash: true,
     });
     mapRef.current = map;
     map.addControl(new maplibregl.NavigationControl({ showCompass: false }), "bottom-left");
+    setIsBelowGroupingThreshold(map.getZoom() < GROUPING_ZOOM_THRESHOLD);
 
     function updateRadiusPaint() {
       if (!map.getLayer(LAYER_ID)) return;
@@ -121,8 +119,7 @@ export default function MapView({
             "circle-stroke-width": 1,
           },
         });
-        // Clicking a cluster zooms to fit its member points; clicking an
-        // individual point does nothing (no popup/details).
+        // Clicking a cluster zooms to fit its member points.
         map.on("click", LAYER_ID, (e) => {
           const feature = e.features?.[0];
           if (!feature || feature.properties?.kind !== "cluster") return;
@@ -191,10 +188,6 @@ export default function MapView({
     map.setPaintProperty(LAYER_ID, "circle-radius", circleRadiusExpression(baseRadiusPx));
   }, [circleRadiusMeters]);
 
-  // Inline styles, not just Tailwind's `absolute inset-0` class: maplibre-gl.css
-  // ships `.maplibregl-map { position: relative }`, which ties in specificity
-  // with the `.absolute` utility class and can win the cascade, collapsing
-  // this container to 0 height. Inline styles always win that tie.
   return (
     <div
       ref={containerRef}
