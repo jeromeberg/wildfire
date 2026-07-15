@@ -22,7 +22,7 @@ export const SITE = {
       "feux de forêt",
       "incendies",
       "forêt",
-      "fontainebleau",
+      "fontainebleau feu",
       "feux de forêt France",
       "carte des incendies",
       "incendies en direct",
@@ -88,12 +88,12 @@ export const TIME_RANGE_OPTIONS: { id: TimeRange; dayRange: number }[] = [
 ];
 export const DEFAULT_TIME_RANGE: TimeRange = "48h";
 
-export const CIRCLE_RADIUS_METERS = { min: 100, max: 2000, step: 100, default: 700 };
+export const CIRCLE_RADIUS_METERS = { min: 200, max: 2000, step: 100, default: 1000 };
 
 export const GROUPING_RADIUS_KM = { min: 1, max: 20, step: 0.5, default: 13 };
 
 // At/above this zoom level, points render ungrouped as individuals.
-export const GROUPING_ZOOM_THRESHOLD = 9;
+export const GROUPING_ZOOM_THRESHOLD = 8;
 
 // Clicking a cluster zooms the map to fit its member points.
 export const CLUSTER_CLICK_ZOOM = {

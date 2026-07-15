@@ -55,7 +55,7 @@ const EN: Translations = {
     intro:
       "Live map of wildfires and forest fires across France, built from NASA FIRMS satellite data (VIIRS, MODIS, Landsat).",
     madeBy: "Made by",
-    dataFrom: "Data from NASA FIRMS.",
+    dataFrom: "Data from",
   },
 };
 
@@ -85,7 +85,7 @@ const FR: Translations = {
     intro:
       "Carte en direct des feux de forêt et incendies en France, à partir des données satellite NASA FIRMS (VIIRS, MODIS, Landsat).",
     madeBy: "Réalisé par",
-    dataFrom: "Données NASA FIRMS.",
+    dataFrom: "Données",
   },
 };
 

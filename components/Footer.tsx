@@ -16,7 +16,15 @@ export default function Footer() {
       >
         Jerome Berg
       </a>
-      . {t.footer.dataFrom}
+      . {t.footer.dataFrom}{" "}
+      <a
+        href="https://www.earthdata.nasa.gov/data/tools/firms"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="underline hover:text-neutral-700"
+      >
+        NASA FIRMS
+      </a>
     </footer>
   );
 }
