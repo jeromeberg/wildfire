@@ -116,7 +116,7 @@ export const CONFIDENCE_LEVELS: { id: Confidence; color: string }[] = [
   { id: "medium", color: "#f97316" },
   { id: "high", color: "#dc2626" },
 ];
-export const DEFAULT_CONFIDENCE_FILTER: Confidence[] = ["low", "medium", "high"];
+export const DEFAULT_CONFIDENCE_FILTER: Confidence[] = ["medium", "high"];
 
 // MODIS/Landsat confidence is a 0-100 number; VIIRS confidence is already a
 // low/nominal/high category and does not use these thresholds.
