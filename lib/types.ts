@@ -8,7 +8,7 @@ export type Source =
   | "MODIS_AQUA"
   | "MODIS_TERRA";
 
-export type TimeRange = "24h" | "48h" | "7d";
+export type TimeRange = "24h" | "48h" | "5d";
 
 export type Basemap = "plan" | "satellite";
 

@@ -45,7 +45,7 @@ const EN: Translations = {
     confidence: "Confidence",
     fetchErrors: "Fetch error",
   },
-  timeRange: { "24h": "24h", "48h": "48h", "7d": "7 days" },
+  timeRange: { "24h": "24h", "48h": "48h", "5d": "5 days" },
   confidence: { low: "Low", medium: "Medium", high: "High" },
   basemap: { plan: "Plan", satellite: "Satellite" },
   errors: {
@@ -75,7 +75,7 @@ const FR: Translations = {
     confidence: "Confiance",
     fetchErrors: "Erreur de chargement",
   },
-  timeRange: { "24h": "24h", "48h": "48h", "7d": "7 jours" },
+  timeRange: { "24h": "24h", "48h": "48h", "5d": "5 jours" },
   confidence: { low: "Faible", medium: "Moyenne", high: "Élevée" },
   basemap: { plan: "Plan", satellite: "Satellite" },
   errors: {
@@ -84,7 +84,7 @@ const FR: Translations = {
   footer: {
     intro:
       "Carte en direct des feux de forêt et incendies en France, à partir des données satellite NASA FIRMS (VIIRS, MODIS, Landsat).",
-    madeBy: "Réalisé par",
+    madeBy: "Développé par",
     dataFrom: "Données",
   },
 };

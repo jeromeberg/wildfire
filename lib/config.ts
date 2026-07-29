@@ -84,7 +84,7 @@ export const BASEMAPS: Record<Basemap, StyleSpecification> = {
 export const TIME_RANGE_OPTIONS: { id: TimeRange; dayRange: number }[] = [
   { id: "24h", dayRange: 1 },
   { id: "48h", dayRange: 2 },
-  { id: "7d", dayRange: 5 },
+  { id: "5d", dayRange: 5 },
 ];
 export const DEFAULT_TIME_RANGE: TimeRange = "48h";
 
