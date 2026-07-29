@@ -22,6 +22,7 @@ interface MapViewProps {
   circleRadiusMeters: number;
   groupingRadiusKm: number;
   basemap: Basemap;
+  pointsVisible: boolean;
 }
 
 function metersToPixels(meters: number, latitude: number, zoom: number): number {
@@ -48,6 +49,7 @@ export default function MapView({
   circleRadiusMeters,
   groupingRadiusKm,
   basemap,
+  pointsVisible,
 }: MapViewProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<maplibregl.Map | null>(null);
@@ -56,6 +58,10 @@ export default function MapView({
   useEffect(() => {
     circleRadiusMetersRef.current = circleRadiusMeters;
   }, [circleRadiusMeters]);
+  const pointsVisibleRef = useRef(pointsVisible);
+  useEffect(() => {
+    pointsVisibleRef.current = pointsVisible;
+  }, [pointsVisible]);
 
   const [isBelowGroupingThreshold, setIsBelowGroupingThreshold] = useState(
     MAP_DEFAULTS.zoom < GROUPING_ZOOM_THRESHOLD
@@ -107,6 +113,9 @@ export default function MapView({
           id: LAYER_ID,
           type: "circle",
           source: SOURCE_ID,
+          layout: {
+            visibility: pointsVisibleRef.current ? "visible" : "none",
+          },
           paint: {
             "circle-color": [
               "case",
@@ -178,6 +187,13 @@ export default function MapView({
     const source = map.getSource(SOURCE_ID) as maplibregl.GeoJSONSource | undefined;
     source?.setData(toFeatureCollection(mapPoints));
   }, [mapPoints]);
+
+  // Toggle marker visibility without touching the underlying data.
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!map || !map.getLayer(LAYER_ID)) return;
+    map.setLayoutProperty(LAYER_ID, "visibility", pointsVisible ? "visible" : "none");
+  }, [pointsVisible]);
 
   // Re-apply circle radius immediately when the slider changes.
   useEffect(() => {

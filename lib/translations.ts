@@ -19,6 +19,10 @@ export interface Translations {
   timeRange: Record<TimeRange, string>;
   confidence: Record<Confidence, string>;
   basemap: Record<Basemap, string>;
+  points: {
+    show: string;
+    hide: string;
+  };
   errors: {
     fetchFailed: string;
   };
@@ -48,6 +52,7 @@ const EN: Translations = {
   timeRange: { "24h": "24h", "48h": "48h", "5d": "5 days" },
   confidence: { low: "Low", medium: "Medium", high: "High" },
   basemap: { plan: "Plan", satellite: "Satellite" },
+  points: { show: "Show points", hide: "Hide points" },
   errors: {
     fetchFailed: "Failed to load data",
   },
@@ -78,6 +83,7 @@ const FR: Translations = {
   timeRange: { "24h": "24h", "48h": "48h", "5d": "5 jours" },
   confidence: { low: "Faible", medium: "Moyenne", high: "Élevée" },
   basemap: { plan: "Plan", satellite: "Satellite" },
+  points: { show: "Afficher les points", hide: "Masquer les points" },
   errors: {
     fetchFailed: "Échec du chargement des données",
   },

@@ -5,6 +5,7 @@ import Navbar from "@/components/Navbar";
 import Sidebar from "@/components/Sidebar";
 import Footer from "@/components/Footer";
 import MapView from "@/components/MapView";
+import MapPillButton from "@/components/MapPillButton";
 import { useLocale } from "@/components/LocaleProvider";
 import {
   CIRCLE_RADIUS_METERS,
@@ -20,6 +21,7 @@ export default function Home() {
   const { t } = useLocale();
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [basemap, setBasemap] = useState<Basemap>(MAP_DEFAULTS.defaultBasemap);
+  const [pointsVisible, setPointsVisible] = useState(true);
 
   const [range, setRange] = useState<TimeRange>(DEFAULT_TIME_RANGE);
   const [sources, setSources] = useState<Source[]>(
@@ -62,14 +64,16 @@ export default function Home() {
           circleRadiusMeters={circleRadiusMeters}
           groupingRadiusKm={groupingRadiusKm}
           basemap={basemap}
+          pointsVisible={pointsVisible}
         />
-        <button
-          type="button"
-          onClick={() => setBasemap((b) => (b === "plan" ? "satellite" : "plan"))}
-          className="absolute top-3 left-3 z-10 px-3.5 py-1.5 text-sm font-medium rounded-full bg-white/90 backdrop-blur-md border border-neutral-200 shadow-lg text-neutral-700 hover:border-ember-500 hover:text-ember-600 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ember-500"
-        >
-          {t.basemap[basemap === "plan" ? "satellite" : "plan"]}
-        </button>
+        <div className="absolute top-3 left-3 z-10 flex flex-col items-start gap-2">
+          <MapPillButton onClick={() => setBasemap((b) => (b === "plan" ? "satellite" : "plan"))}>
+            {t.basemap[basemap === "plan" ? "satellite" : "plan"]}
+          </MapPillButton>
+          <MapPillButton pressed={pointsVisible} onClick={() => setPointsVisible((v) => !v)}>
+            {pointsVisible ? t.points.hide : t.points.show}
+          </MapPillButton>
+        </div>
         <Sidebar
           open={sidebarOpen}
           range={range}
