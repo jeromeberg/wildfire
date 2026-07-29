@@ -14,6 +14,7 @@ import {
   GROUPING_RADIUS_KM,
   MAP_DEFAULTS,
   SOURCES,
+  TIME_RANGE_OPTIONS,
 } from "@/lib/config";
 import type { Basemap, Confidence, FirePoint, FiresApiError, Source, TimeRange } from "@/lib/types";
 
@@ -67,10 +68,21 @@ export default function Home() {
           pointsVisible={pointsVisible}
         />
         <div className="absolute top-3 left-3 z-10 flex flex-col items-start gap-2">
+          <div className="flex flex-row gap-2">
+            {TIME_RANGE_OPTIONS.map((option) => (
+              <MapPillButton
+                key={option.id}
+                pressed={range === option.id}
+                onClick={() => setRange(option.id)}
+              >
+                {t.timeRange[option.id]}
+              </MapPillButton>
+            ))}
+          </div>
           <MapPillButton onClick={() => setBasemap((b) => (b === "plan" ? "satellite" : "plan"))}>
             {t.basemap[basemap === "plan" ? "satellite" : "plan"]}
           </MapPillButton>
-          <MapPillButton pressed={pointsVisible} onClick={() => setPointsVisible((v) => !v)}>
+          <MapPillButton pressed={!pointsVisible} onClick={() => setPointsVisible((v) => !v)}>
             {pointsVisible ? t.points.hide : t.points.show}
           </MapPillButton>
         </div>
