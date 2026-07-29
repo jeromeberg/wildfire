@@ -103,7 +103,7 @@ export const CLUSTER_CLICK_ZOOM = {
 };
 
 export const SOURCES: { id: Source; label: string; firmsProduct: string; defaultEnabled: boolean }[] = [
-  { id: "LANDSAT", label: "Landsat", firmsProduct: "LANDSAT_NRT", defaultEnabled: true },
+  // { id: "LANDSAT", label: "Landsat", firmsProduct: "LANDSAT_NRT", defaultEnabled: true },
   { id: "VIIRS_NOAA20", label: "VIIRS NOAA-20", firmsProduct: "VIIRS_NOAA20_NRT", defaultEnabled: true },
   { id: "VIIRS_NOAA21", label: "VIIRS NOAA-21", firmsProduct: "VIIRS_NOAA21_NRT", defaultEnabled: true },
   { id: "VIIRS_SNPP", label: "VIIRS Suomi NPP", firmsProduct: "VIIRS_SNPP_NRT", defaultEnabled: true },

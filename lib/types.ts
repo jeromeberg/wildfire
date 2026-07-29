@@ -1,7 +1,7 @@
 export type Confidence = "low" | "medium" | "high";
 
 export type Source =
-  | "LANDSAT"
+  // | "LANDSAT"
   | "VIIRS_NOAA20"
   | "VIIRS_NOAA21"
   | "VIIRS_SNPP"
